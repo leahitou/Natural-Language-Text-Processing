@@ -1,51 +1,59 @@
-# Hate Speech Detection using Deep Learning
+# Hate Speech Detection – NLP Project
 
-This project implements a hate speech detection system using deep learning techniques. The model classifies tweets into three categories: **hate speech**, **offensive language**, or **neither**.
+This project implements a hate speech detection system using Natural Language
+Processing and Machine Learning techniques. The goal is to classify tweets into
+three categories: Hate Speech, Offensive Language, or Neither.
+
+---
+
+## Dataset
+
+The dataset consists of labeled tweets with three classes:
+- **0**: Hate Speech  
+- **1**: Offensive Language  
+- **2**: Neither  
+
+---
 
 ## 🧠 Model Architecture
 - **Embedding Layer**: Converts text to dense vectors.
 - **Stacked LSTM Layers**: Capture sequential dependencies in text.
 - **Dense Output Layer**: 3-class classification using softmax.
 
-## 📊 Dataset
-- **Source**: `labeled_data.csv` https://www.kaggle.com/datasets/mrmorj/hate-speech-and-offensive-language-dataset?resource=download
-- **Size**: 24,783 tweets
-- **Classes**:
-  - `0` → Hate Speech
-  - `1` → Offensive Language
-  - `2` → Neither
+--
 
-## 🛠️ Preprocessing Pipeline
-1. **Cleaning**: Remove non-alphabetic characters, extra spaces.
-2. **Lemmatization**: Reduce words to base forms using spaCy.
-3. **Stopword Removal**: Eliminate common words.
-4. **Text Encoding**: One-hot encoding + padding to fixed length.
-5. **Handling Imbalance**: SMOTE oversampling applied to minority classes.
+## Methodology
 
-## 📈 Performance
-- **Accuracy**: ~88.34%
-- **Precision/Recall/F1-Score**: Detailed in classification report.
-- **Confusion Matrix**: Visualized using seaborn.
+1. Exploratory Data Analysis (EDA) was performed to understand class distribution.
+2. Text data was transformed using **TF-IDF vectorization**.
+3. Multiple machine learning models were trained and benchmarked.
+4. Logistic Regression was selected for deployment.
+5. A Flask web application was built for real-time predictions.
+6. Unit tests were implemented to verify model behavior.
 
-## 🧪 Training Details
-- **Optimizer**: Adam
-- **Loss**: Sparse Categorical Crossentropy
-- **Epochs**: 10
-- **Batch Size**: 32
-- **Train/Test Split**: 80/20
+---
 
-## 🚀 How to Run
-1. Upload `labeled_data.csv` to Colab or local environment.
-2. Open and run `Hate_Speech_Detection.ipynb`.
-3. Ensure required libraries are installed:
-   ```bash
-   pip install pandas spacy tensorflow scikit-learn imbalanced-learn seaborn matplotlib
-   python -m spacy download en_core_web_sm
+## Model Performance
+
+The final model achieved strong accuracy and F1-score using TF-IDF features and
+Logistic Regression. Benchmarking was performed against SVM and Naive Bayes
+models.
+
+---
 
 📌 Dependencies
 - Python 3.x
 - TensorFlow / Keras
 - spaCy
 - scikit-learn
+
+--
+
+## How to Run the Application
+
+```bash
+pip install -r requirements.txt
+python app.py
+
 - imbalanced-learn
 - pandas, numpy, matplotlib, seaborn
